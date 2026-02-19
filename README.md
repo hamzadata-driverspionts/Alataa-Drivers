@@ -42,7 +42,7 @@ button:hover {
     text-align: right;
 }
 .logo {
-    width: 150px;
+    width: 180px;
     margin-bottom: 10px;
 }
 ul {
