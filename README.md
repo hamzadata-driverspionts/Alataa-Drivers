@@ -27,7 +27,7 @@ input {
 button {
     padding: 10px 20px;
     background: #2e7d32;
-    color: black;
+    color: white;
     border: none;
     cursor: pointer;
     font-size: 16px;
@@ -46,7 +46,7 @@ button:hover {
 <body>
 
 <div class="box">
-<h2>ادخل هلو ooرقمك التعريفي</h2>
+<h2>ادخل رقمك التعريفي</h2>
 <input type="text" id="searchId" placeholder="الرقم التعريفي">
 <button onclick="search()">بحث</button>
 <div class="result" id="result"></div>
@@ -70,7 +70,7 @@ async function search(){
         let res = await fetch(sheetURL);
         let text = await res.text();
 
-        let rows = text.split("\n").slice(1); // تجاهل العنوان
+        let rows = text.split("\n").slice(1);
         let found = false;
 
         for(let row of rows){
@@ -94,5 +94,11 @@ async function search(){
         }
 
     } catch (error) {
-        resultBox.innerHTML = "حدث
-# Drivers.
+        resultBox.innerHTML = "حدث خطأ في جلب البيانات";
+        console.error(error);
+    }
+}
+</script>
+
+</body>
+</html>
