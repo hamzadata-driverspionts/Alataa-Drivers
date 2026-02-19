@@ -14,7 +14,7 @@ body {
     background: white;
     padding: 20px;
     margin: 50px auto;
-    width: 400px;
+    width: 300px;
     border-radius: 10px;
     box-shadow: 0 0 10px #ccc;
 }
