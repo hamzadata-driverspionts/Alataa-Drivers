@@ -40,11 +40,12 @@ button:hover {
     font-size: 16px;
     line-height: 1.6;
     text-align: right;
-}
 .logo {
-    width: 180px;
+    max-width: 80%; /* لا يزيد عن 80% من عرض الصندوق */
+    height: auto; 
     margin-bottom: 10px;
 }
+
 ul {
     list-style-type: none;
     padding: 0;
