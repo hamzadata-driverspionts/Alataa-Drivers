@@ -113,7 +113,7 @@ async function search() {
         }
 
         // حساب النقاط النهائية
-        let basePoints = 10; // النقاط الأساسية لكل سائق
+        let basePoints = 12; // النقاط الأساسية لكل سائق
         let totalPoints = basePoints;
         let recordHTML = `<b>الاسم:</b> ${records[0].name}<br><b>سجل النقاط:</b><br><ul>`;
 
