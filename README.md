@@ -6,7 +6,7 @@
 
 <style>
 body {
-    font-family: merriweather;
+    font-family: Arial;
     text-align: center;
     background: #f2f2f2;
 }
@@ -21,7 +21,7 @@ body {
 }
 
 .logo {
-    width: 400px;
+    width: 120px;
     margin-bottom: 10px;
 }
 
@@ -70,18 +70,9 @@ button {
 
 <script>
 const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTq27e_VfyW4FIqgMTj3zv3kcHqBrUfQWJU1wf4rskMFD1nlT50PGDLzu7gbvxseHJFq69o64d3ENJa/pub?output=csv";
-async function translateText(text, targetLang = "en") {
-    try {
-        async function translateToArabic(text) {
-    try {
-        let url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ar&dt=t&q=" + encodeURIComponent(text);
-        let response = await fetch(url);
-        let data = await response.json();
-        return data[0][0][0];
-    } catch (e) {
-        return text; // إذا فشلت الترجمة يرجع الاسم الأصلي
-    }
-}
+
+async function search() {
+
     let id = document.getElementById("searchId").value.trim();
     let resultBox = document.getElementById("result");
 
@@ -147,8 +138,7 @@ async function translateText(text, targetLang = "en") {
         if(totalPoints < 0) totalPoints = 0;
 
         resultBox.innerHTML = `
-         
-let html = `<b>الاسم:</b> ${name}<br><br>`;
+            <b>الاسم:</b> ${name}<br><br>
             ${html}
             <div class="points-final">النقاط الحالية: ${totalPoints} / 12</div>
         `;
