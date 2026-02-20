@@ -6,7 +6,7 @@
 
 <style>
 body {
-    font-family: Arial;
+    font-family: merriweather;
     text-align: center;
     background: #f2f2f2;
 }
