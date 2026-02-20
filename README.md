@@ -113,7 +113,7 @@ async function search() {
         }
 
         // حساب النقاط النهائية
-        let totalPoints = 12; // الحد الأقصى والأساسي
+       let totalPoints = 12; // الرصيد الأساسي
 
 records.forEach(rec => {
     if(rec.type === "خصم"){
@@ -122,17 +122,16 @@ records.forEach(rec => {
     else if(rec.type === "إضافة"){
         totalPoints += rec.points;
     }
-
-    // منع تجاوز الحد الأعلى
-    if(totalPoints > 12){
-        totalPoints = 12;
-    }
-
-    // منع النزول أقل من صفر (اختياري ومفيد)
-    if(totalPoints < 0){
-        totalPoints = 0;
-    }
 });
+
+// ===== ضبط الحدود بعد انتهاء الحساب =====
+if(totalPoints > 12){
+    totalPoints = 12;
+}
+
+if(totalPoints < 0){
+    totalPoints = 0;
+}
 
             recordHTML += `<li>${rec.date} | ${rec.type} | ${rec.reason} | ${rec.points}</li>`;
         }
