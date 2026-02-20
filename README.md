@@ -72,16 +72,16 @@ button {
 const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTq27e_VfyW4FIqgMTj3zv3kcHqBrUfQWJU1wf4rskMFD1nlT50PGDLzu7gbvxseHJFq69o64d3ENJa/pub?output=csv";
 async function translateText(text, targetLang = "en") {
     try {
-        let url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
+        async function translateToArabic(text) {
+    try {
+        let url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ar&dt=t&q=" + encodeURIComponent(text);
         let response = await fetch(url);
         let data = await response.json();
         return data[0][0][0];
-    } catch {
+    } catch (e) {
         return text; // إذا فشلت الترجمة يرجع الاسم الأصلي
     }
 }
-async function search() {
-
     let id = document.getElementById("searchId").value.trim();
     let resultBox = document.getElementById("result");
 
