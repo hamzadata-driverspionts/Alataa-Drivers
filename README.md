@@ -90,44 +90,135 @@ async function search() {
 
         let rows = data.split("\n").slice(1);
 
-        let totalPoints = 12;
-        let html = "";
-        let found = false;
-        let name = "";
+       // ===== تجميع السجلات =====
+let records = [];
+let name = "";
 
-        rows.forEach(row => {
+rows.forEach(row => {
 
-            if(row.trim() === "") return;
+    if(row.trim() === "") return;
 
-            let cols = row.split(",");
+    let cols = row.split(",");
+    let rowId = (cols[0] || "").trim();
 
-            let rowId = (cols[0] || "").trim();
+    if(rowId === id){
 
-            if(rowId === id){
+        name = cols[1] ? cols[1].trim() : "";
 
-                found = true;
-
-                name = cols[1] ? cols[1].trim() : "";
-                let date = cols[2] ? cols[2].trim() : "";
-                let type = cols[3] ? cols[3].trim() : "";
-                let reason = cols[4] ? cols[4].trim() : "";
-                let points = parseFloat(cols[5]) || 0;
-
-                // توحيد كلمة اضافة
-                type = type.replace("إ","ا");
-
-                if(type === "خصم"){
-                    totalPoints -= points;
-                    html += `<div class="deduct">${date} | خصم | ${reason} | ${points}</div>`;
-                }
-                else if(type === "اضافة"){
-                    totalPoints += points;
-                    html += `<div class="add">${date} | إضافة | ${reason} | ${points}</div>`;
-                }
-            }
-
+        records.push({
+            date: cols[2] ? cols[2].trim() : "",
+            type: cols[3] ? cols[3].trim() : "",
+            reason: cols[4] ? cols[4].trim() : "",
+            points: parseFloat(cols[5]) || 0
         });
+    }
+});
 
+if(records.length === 0){
+    resultBox.innerHTML = "لا توجد بيانات لهذا الرقم";
+    return;
+}
+
+// ===== ترتيب حسب التاريخ =====
+records.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+// ===== الحساب =====
+// ===== تجميع السجلات =====
+let records = [];
+let name = "";
+
+rows.forEach(row => {
+
+    if(row.trim() === "") return;
+
+    let cols = row.split(",");
+    let rowId = (cols[0] || "").trim();
+
+    if(rowId === id){
+
+        name = cols[1] ? cols[1].trim() : "";
+
+        records.push({
+            date: cols[2] ? cols[2].trim() : "",
+            type: cols[3] ? cols[3].trim() : "",
+            reason: cols[4] ? cols[4].trim() : "",
+            points: parseFloat(cols[5]) || 0
+        });
+    }
+});
+
+if(records.length === 0){
+    resultBox.innerHTML = "لا توجد بيانات لهذا الرقم";
+    return;
+}
+
+// ===== ترتيب حسب التاريخ =====
+records.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+// ===== الحساب =====
+// ===== تجميع السجلات =====
+let records = [];
+let name = "";
+
+rows.forEach(row => {
+
+    if(row.trim() === "") return;
+
+    let cols = row.split(",");
+    let rowId = (cols[0] || "").trim();
+
+    if(rowId === id){
+
+        name = cols[1] ? cols[1].trim() : "";
+
+        records.push({
+            date: cols[2] ? cols[2].trim() : "",
+            type: cols[3] ? cols[3].trim() : "",
+            reason: cols[4] ? cols[4].trim() : "",
+            points: parseFloat(cols[5]) || 0
+        });
+    }
+});
+
+if(records.length === 0){
+    resultBox.innerHTML = "لا توجد بيانات لهذا الرقم";
+    return;
+}
+
+// ===== ترتيب حسب التاريخ =====
+records.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+// ===== الحساب =====
+let totalPoints = 12;
+let html = `<b>الاسم:</b> ${name}<br><br>`;
+
+records.forEach(rec => {
+
+    let type = rec.type.replace("إ","ا").trim();
+
+    if(type === "خصم"){
+        totalPoints -= rec.points;
+        html += `<div class="deduct">${rec.date} | خصم | ${rec.reason} | ${rec.points}</div>`;
+    }
+    else if(type === "اضافة"){
+        totalPoints += rec.points;
+        html += `<div class="add">${rec.date} | إضافة | ${rec.reason} | ${rec.points}</div>`;
+    }
+
+    // ضبط الحد بعد كل عملية
+    if(totalPoints > 12) totalPoints = 12;
+    if(totalPoints < 0) totalPoints = 0;
+});
+
+html += `<div class="points-final">النقاط الحالية: ${totalPoints} / 12</div>`;
+
+resultBox.innerHTML = html;
+html += `<div class="points-final">النقاط الحالية: ${totalPoints} / 12</div>`;
+
+resultBox.innerHTML = html;
+html += `<div class="points-final">النقاط الحالية: ${totalPoints} / 12</div>`;
+
+resultBox.innerHTML = html;
         if(!found){
             resultBox.innerHTML = "لا توجد بيانات لهذا الرقم";
             return;
