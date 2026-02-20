@@ -147,7 +147,13 @@ async function search() {
         if(totalPoints < 0) totalPoints = 0;
 
         resultBox.innerHTML = `
-            <b>الاسم:</b> ${name}<br><br>
+           // ترجمة الاسم
+let translatedName = await translateText(name, "en");
+
+let html = `
+<b>الاسم:</b> ${name}<br>
+<b>Name:</b> ${translatedName}<br><br>
+`;
             ${html}
             <div class="points-final">النقاط الحالية: ${totalPoints} / 12</div>
         `;
