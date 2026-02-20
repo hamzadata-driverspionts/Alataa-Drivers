@@ -147,16 +147,8 @@ async function translateText(text, targetLang = "en") {
         if(totalPoints < 0) totalPoints = 0;
 
         resultBox.innerHTML = `
-           // ترجمة الاسم
-let translatedName = await translateText(name, "en");
-
-// ترجمة الاسم إلى العربي
-let arabicName = await translateToArabic(name);
-
-let html = `
-<b>الاسم:</b> ${arabicName}<br>
-<b>Name:</b> ${name}<br><br>
-`;
+         
+let html = `<b>الاسم:</b> ${name}<br><br>`;
             ${html}
             <div class="points-final">النقاط الحالية: ${totalPoints} / 12</div>
         `;
