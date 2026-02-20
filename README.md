@@ -118,11 +118,11 @@ async function search() {
 
                 if(type === "خصم"){
                     totalPoints -= points;
-                    html += `<div class="deduct">${date} | خصم | ${reason} | ${points}</div>`;
+                    html += `<div class="deduct">${date} | خصم | ${reason} |عدد نقاط الخصم ${points}</div>`;
                 }
                 else if(type === "اضافة"){
                     totalPoints += points;
-                    html += `<div class="add">${date} | إضافة | ${reason} |نقطة ${points}</div>`;
+                    html += `<div class="add">${date} | إضافة | ${reason} |عدد نقاط الريح ${points}</div>`;
                 }
             }
 
