@@ -145,12 +145,12 @@
     <div class="badge">نظام النقاط</div>
     <img src="logo.png" class="logo-img" alt="الشعار" onerror="this.style.display='none'">
     <h1>الاستعلام عن النقاط</h1>
-    <p>أدخل رقمك التعريفي لعرض رصيدك</p>
+    <p>أدخل رقمك التعريفي لعرض نقاطك</p>
   </div>
   <div class="body">
     <label class="field-label" for="searchId">الرقم التعريفي</label>
     <div class="input-wrap">
-      <input type="text" id="searchId" placeholder="مثال: 1023" autocomplete="off">
+      <input type="text" id="searchId" placeholder="ادخل رقمك التعريفي: " autocomplete="off">
       <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
       </svg>
