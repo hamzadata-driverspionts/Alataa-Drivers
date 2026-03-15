@@ -44,7 +44,7 @@
   }
   .badge::before { content:'●'; font-size:8px; animation:blink 1.8s ease infinite; }
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-  .logo-img {
+  .logo-png {
     display:block; max-width:160px; max-height:56px; object-fit:contain;
     margin:0 auto 12px; filter:brightness(0) invert(1); opacity:0.85;
   }
